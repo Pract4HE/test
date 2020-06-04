@@ -26,33 +26,6 @@ while row is not None:
     print(row[1]+'\n')
     row = cursor.fetchone()
 
-# Закрываем с базой данных
+# Закрываем соединение с базой данных
 cursor.close()
 conn.close()
-
-
-
-from sqlite3 import Error
-
-def sql_connection():
-
-    try:
-
-        con = sqlite3.connect('mydatabase.db')
-
-        return con
-
-    except Error:
-
-        print(Error)
-
-def sql_table(con):
-
-    cursorObj = con.cursor()
-
-    cursorObj.execute("CREATE TABLE employees(id integer PRIMARY KEY, name text, salary real, department text, position text, hireDate text)")
-
-    con.commit()
-
-con = sql_connection()
-sql_table(con)
